@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 1-4(함수 slide, animate)</title>
+    <script src="./jquery-3.5.1.js"></script>
+    <script src="./jquery.color-2.1.2.js"></script> 
+    <script>
+        $(document).ready(function(){
+            //slide 함수
+            $("#div01 > .flip").on("click", function(){
+                $("#div01 > .panel").slideDown(500);
+            });
+            $("#div02 > .flip").on("click", function(){
+                $("#div02 > .panel").slideUp("slow");
+            });
+            $("#div03 > .flip").on("click", function(){
+                $("#div03 > .panel").slideToggle("slow");
+            });
+
+            //animate 함수
+            $("#div04 > .ani1").on("click", function(){
+                $("#div04 > .ani1").animate({left:"250px"});
+            });
+            $("#div04 > .ani2").on("click", function(){
+                $("#div04 > .ani2").animate({
+                        left: "250px",
+                        opacity: "0.5",
+                        height: "150px",
+                        width: "150px",
+                        color: "rgb(80,70,30)"
+                    });
+            });
+
+            $("#div04 > .ani3").on("click",function(){//(오류남)
+                $("#div04 > .ani3").animate({
+                    left: "250px",
+                    height: "+=100px",
+                    width: "+=100px",
+                    color: "red"
+                });
+            });
+
+            $("#div04 > .ani4").on("click",function(){//(오류남)
+                $("#div04 > .ani4").animate({
+                    height :  "300px",
+                    opacity : "0.4"
+                }, "slow");
+                $("#diva04 > .ani4").animate({
+                    width: "300px",
+                    opacity: "0.8"
+                },"slow");
+                $("#div04 > .ani4").animate({
+                    height: "100px",
+                    opacity: "0.4"
+                },"slow");
+                $("#div04 > .ani4").animate({
+                    width: "100px",
+                    opacity: "0.8"
+                },"slow");
+            });
+
+            //문제1. animate 함수를 사용하여 div 태그의 위치를 왼쪽에서 오른쪽으로 300px 이동시키고, 
+            //이동후 div 태그의 p태그 글자가 8px로 작아졌다가 다시 24px로 커지는 애니메이션을 완성하세요
+            //div 태그의 크기 width : 200px, height : 200px 
+            // p태그의 글자 : Hello (시작시 글자 크기 : 16px or 1em / 작아진 경우 : 8px or 0.5em / 커진 경우 : 24px or 2em) black
+            // fontSize : "16px"
+
+            // $("#formEvent").on("focus", function(){
+            //     $("#formEvent").css("font-size","36px");
+            // }); 참고사항
+
+            $("#div05 > .aniTest").on("click",function(){
+                $("#div05 > .aniTest").animate({left:"300px"});
+                $("#div05 .pTest").animate({fontSize:"8px"});
+                $("#div05 .pTest").animate({fontSize:"24px"});
+            });
+
+        });
+    </script>
+    <style>
+        .panel, .flip{
+            padding: 5px;
+            text-align: center;
+            background-color: #e5eecc;
+            border: 1px solid lightgray;
+        }
+
+        .panel{ padding: 50px;}
+
+        #div01 > .panel{
+            display: none;
+        }
+
+        #div04 { position: relative; }
+        .box{
+            width: 100px;
+            height: 100px;
+        }
+        #div04 > .ani1{
+            position: absolute;
+            background-color: yellowgreen;
+        }
+
+        #div04 > .ani2{
+            position: absolute;
+            background-color: yellowgreen;
+            top: 150px;
+            left: 0px;
+        }
+
+        #div04 > .ani3{ 
+            position: absolute;
+            background-color: yellowgreen;
+            top: 260px;
+            left: 0px;
+        }
+
+        #div04 > .ani4{
+            position: absolute;
+            background-color: yellowgreen;
+            top: 380px;
+            left: 0px;
+        }
+
+        #div05 > .aniTest {
+            position: absolute;
+            background-color: pink;
+            width : 200px;
+            height : 200px;
+        }
+
+        .pTest{
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="div01">
+        <h3>slide down</h3>
+        <div class="flip">클릭시 아래의 div 영역 표시</div>
+        <div class="panel">클릭시 표시되는 div 영역</div>
+    </div>
+
+    <br><hr><br>
+
+    <div id="div02">
+        <h3>slide up</h3>
+        <div class="flip">클릭시 아래의 div 영역 숨김</div>
+        <div class="panel">클릭시 숨겨지는 div 영역</div>
+    </div>
+    
+    <br><hr><br>
+
+    <div id="div03">
+        <h3>slide toggle</h3>
+        <div class="flip">클릭시 아래의 div 영역 숨김/표시</div>
+        <div class="panel">클릭시 숨김/표시되는 div 영역</div>
+    </div>
+
+    <div id="div04">
+        <h3>animate</h3>
+        <div class="box ani1"></div>
+        <br>
+        <div class="box ani2">클릭시 이동하면서 커지고 투명해짐</div>
+        <div class="box ani3">클릭시 상대값을 사용하여 크기가 커짐</div>
+        <div class="box ani4">클릭시 애니메이션 연계동작</div>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><hr><br>
+ 
+    <div id="div05">
+        <div class="aniTest">
+            <p class="pTest">Hello</p>
+        </div>
+    </div>
+
+    
+</body>
+</html>

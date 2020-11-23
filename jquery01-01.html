@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 1-1(기본사용법)</title>
+    <!--jquery 사용 1번방식 : <script src="./jquery-3.5.1.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <button id="btn01" type="button">자바 스크립트로 버튼 이벤트</button>
+    <button id="btn02" type="button">jquery로 버튼 이벤트</button>
+    <button id="btn03" type="button">cdn으로 jquery 로딩 후 버튼 이벤트</button>
+    
+    <script>
+        //HTML 선택부분과 실행 영역을 나누어 입력
+        var btn01 = document.getElementById("btn01");
+        //옛날 방식
+        // btn01.onclick=function(){
+        //     alert("자바스크립트로 버튼 이벤트 발생");
+        // };
+
+        btn01.addEventListener("click",function(){
+            alert("자바스크립트로 버튼 이벤트 발생");
+        }); 
+
+        //HTML 선택과 동시에 실행영역 입력. 소스 코드 짧음
+        $("#btn02").on("click",function(){
+            alert("jquery로 버튼 이벤트 발생");
+        }); 
+
+        $("#btn03").on("click",function(){
+            alert("cdn으로 jquery 로딩 후 버튼 이벤트 발생");
+        });
+    </script>
+</body>
+</html>
