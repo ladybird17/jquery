@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 2-1(콜백함수)</title>
+    <script src="./jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function(){ 
+
+            //콜백 함수 사용
+            $("#btncall1").on("click", function(){
+                $("#pcall1").hide("slow", function(){
+                    //alert("p 태그 숨겨짐");
+                    console.log("콜백함수 사용");
+                });
+            });
+            //콜백 함수 미사용 (차이점 확인)
+            $("#btncall2").on("click",function(){
+                $("#pcall2").hide("slow");
+                //alert("p 태그 숨겨짐");
+                console.log("콜백함수 미사용");
+            });
+            
+            $("#btncall3").on("click",function(){
+                console.log("버튼3 : 출력1");
+                console.log("버튼3 : 출력2");
+                console.log("버튼3 : 출력3");
+            })          
+            $("#btncall4").on("click",function(){
+                console.log("버튼 4 : 출력1");
+                setTimeout(function(){//타이머 1초 후에 콜백함수 실행
+                    console.log("버튼 4 : 출력2");
+                },1000);
+                console.log("버튼 4 : 출력3");
+            })
+        });
+    </script>
+</head>
+<body>
+    <h3>콜백 함수 사용</h3>
+    <button id="btncall1">Hide</button>
+    <p id="pcall1">버튼 클릭시 숨겨질 p태그</p>
+
+    <br><hr><br>
+
+    <h3>콜백 함수 미사용</h3>
+    <button id="btncall2">hide</button>
+    <p id="pcall2">버튼 클릭시 숨겨질 p태그</p>
+    
+    <br><hr><br>
+
+    <h3>비동기 방식</h3>
+    <button id="btncall3">클릭 시 콘솔 창에 출력</button>
+    <button id="btncall4">클릭 시 콘솔 창에 출력</button>
+</body>
+</html>
