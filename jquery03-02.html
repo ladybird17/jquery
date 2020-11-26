@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 3-2(jquery 트레버싱 자식태그)</title>
+    <script src="./jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#div01 > div").children().css({ //children 직계 자손
+                "color":"red",
+                "border":"2px solid red"
+            });
+            $("#div02 > div").children("p.first").css({ //children 필터 사용
+                "color":"red",
+                "border":"2px solid red"
+            });
+            $("#div03 > div").find("*").css({ //find
+                "color":"red",
+                "border":"2px solid red"
+            });
+        });
+    </script>
+    <style>
+        .desc *{
+            display: block;
+            border: 2px solid lightgray;
+            color: lightgray;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div01">
+        <div class="desc">지정한 div 태그
+            <p>p (직계 자손)
+                <span>span (후손 1단계)</span>
+            </p>
+            <p>p (직계 자손)
+                <span>span (후손 1단계)</span>
+            </p>
+        </div>
+    </div>
+
+    <br><hr><br>
+
+    <div id="div02">
+        <div class="desc">지정한 div 태그
+            <p class="first">p (직계 자손)
+                <span>span (후손 1단계)</span>
+            </p>
+            <p class="second">p (직계 자손)
+                <span>span (후손 1단계)</span>
+            </p>
+            <h4 class="first">h4 (직계자손)</h4>
+        </div>
+    </div>
+    
+    <br><hr><br>
+
+    <div id="div03">
+        <h3>find()사용</h3>
+        <div class="desc">지정한 div 태그
+            <p>p (직계 자손)
+                <span>span (후손 1단계)</span>
+            </p>
+            <p>p (직계 자손)
+                <span>span (후손 1단계)</span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

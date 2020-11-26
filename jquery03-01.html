@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 3-1(jquery 트레버싱 부모태그)</title>
+    <script src="./jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#div01 span").parent().css({ //메서드 체이닝 사용. 부모태그 선택
+                "color" : "red",
+                "border" : "2px solid red"
+            });
+            // $("#div02 span").parents().css({ //모든 조상태그 선택
+            //     "color" : "red",
+            //     "border" : "2px solid red"
+            // });
+            $("#div03 span").parents("ul").css({ //조상태그 필터 사용해서 선택
+                "color" : "red",
+                "border" : "2px solid red"
+            });
+            $("#div04 span").parentsUntil("div").css({
+                "color" : "red",
+                "border" : "2px solid red"
+            });
+        });
+    </script>
+    <style>
+        .ancestors *{
+            display: block;
+            border: 2px solid lightgray;
+            color: lightgray;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div01">
+        <h3>parent() 사용</h3>
+        <div class="ancestors">
+            <div>div (조상 태그 2단계)
+                <ul>ul (조상 태그 1단계)
+                    <li>li (부모 태그)
+                        <span>지정한 span 태그</span>
+                    </li>
+                </ul>
+            </div>
+            <div>div (조상 태그)
+                <p>p (부모 태그)
+                    <span>지정한 span 태그</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <br><hr><br>
+
+    <!-- <div id="div02">
+        <h3>parents() 사용</h3>
+        <div class="ancestors">div (조상태그 3단계)
+            <div>div (조상태그 2단계)
+                <ul>ul (조상태그 1단계)
+                    <li>li (부모 태그)
+                        <span>지정한 span태그</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div> -->
+
+    <br><hr><br>
+
+    <div id="div03">
+        <h3>parents() 필터 사용</h3>
+        <div class="ancestors">div (조상태그 3단계)
+            <div>div (조상태그 2단계)
+                <ul>ul (조상태그 1단계)
+                    <li>li (부모태그)
+                        <span>지정한 span태그</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <br><hr><br>
+
+    <div id="div04">
+        <h3>parentsUntil() 사용</h3>
+        <div class="ancestors">div (조상태그 3단계)
+            <div>div (조상태그 2단계)
+                <ul>ul (조상태그 1단계)
+                    <li>li (부모태그)
+                        <span>지정한 span태그</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

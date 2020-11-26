@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 3-4(기타 태그 트레버싱)</title>
+    <script src="./jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            //first()
+            $("#div01 > div p").first().css("background-color","yellow");
+
+            //last()
+            $("#div02 > div p").last().css("background-color","yellow");
+
+            //eq()
+            $("#div03 p").eq(1).css("background","yellow");
+
+            //filter()
+            $("#div04 p").filter(".intro").css("background-color","yellow");
+
+            //not()
+            $("#div05 p").not(".intro").css("background-color","pink");
+        });
+    </script>
+    <style>
+        .box{
+            border: 1px solid black;
+            padding: 5px;
+            margin: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="div01">
+        <h3>first() 사용</h3>
+        <p>div 태그 밖에 있는 첫번째 p태그</p>
+        <div class="box">
+            <p>첫번째 div의 자손 태그인 첫번째 p태그</p>
+            <p>첫번째 div의 자손 태그인 두번째 p태그</p>
+        </div>
+        <div class="box">
+            <p>두번째 div의 자손 태그인 첫번째 p태그</p>
+            <p>두번째 div의 자손 태그인 두번째 p태그</p>
+        </div>
+        <div class="box">
+            <p>세번째 div의 자손 태그인 첫번째 p태그</p>
+            <p>세번째 div의 자손 태그인 두번째 p태그</p>
+        </div>
+    </div>
+
+    <br><hr><br>
+
+    <div id="div02">
+        <h3>last() 사용</h3>
+        <p>div 태그 밖에 있는 첫번째 p태그</p>
+        <div class="box">
+            <p>첫번째 div의 자손 태그인 첫번째 p태그</p>
+            <p>첫번째 div의 자손 태그인 두번째 p태그</p>
+        </div>
+        <div class="box">
+            <p>두번째 div의 자손 태그인 첫번째 p태그</p>
+            <p>두번째 div의 자손 태그인 두번째 p태그</p>
+        </div>
+        <div class="box">
+            <p>세번째 div의 자손 태그인 첫번째 p태그</p>
+            <p>세번째 div의 자손 태그인 두번째 p태그</p>
+        </div>
+    </div>
+
+    <br><hr><br>
+
+    <div id="div03">
+        <h3>eq() 사용</h3>
+        <p>eq를 사용하여 표현하면 index 0번</p>
+        <p>eq를 사용하여 표현하면 index 1번</p>
+        <p>eq를 사용하여 표현하면 index 2번</p>
+        <p>eq를 사용하여 표현하면 index 3번</p>
+        <p>eq를 사용하여 표현하면 index 4번</p>
+    </div>
+    
+    <br><hr><br>
+
+    <div id="div04">
+        <h3>filter() 사용하기</h3>
+        
+        <p>filter로 검색하여 선택할 태그 1번</p>
+        <p class="intro">filter로 검색하여 선택할 태그 2번</p>
+        <p class="intro">filter로 검색하여 선택할 태그 3번</p>
+        <p>filter로 검색하여 선택할 태그 4번</p>
+    </div>
+        
+    <br><hr><br>
+
+    <div id="div05">
+        <h3>not() 사용하기</h3>
+        
+        <p>not으로 검색하여 선택할 태그 1번</p>
+        <p class="intro">not으로 검색하여 선택할 태그 2번</p>
+        <p class="intro">not으로 검색하여 선택할 태그 3번</p>
+        <p>not으로 검색하여 선택할 태그 4번</p>
+    </div>
+</body>
+</html>
